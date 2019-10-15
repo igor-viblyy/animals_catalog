@@ -1,0 +1,12 @@
+<div class="card-deck mt-3">
+  <% @animals.each do |animal| %>
+    <div class= "card animal-card">
+      <%= image_tag(animal.avatar, class: 'card-img-top') %>
+      <div class="card-body">
+        <h5 class="card-title font-weight-bold">  
+          <%= animal.name %>
+        </h5>
+      </div>
+    </div>
+  <% end %>
+</div>

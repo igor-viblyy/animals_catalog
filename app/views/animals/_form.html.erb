@@ -1,21 +1,31 @@
-<div class="card mt-5">
-  <div class="card-header">
-    <h4 class="text-center font-weight-bold"> Додати друга </h4>
+<div class="row">
+  <div class="col"></div>
+  <div class="col-5">
+    <div class="card mt-5 form-card">
+      <div class="card-header">
+        <h4 class="text-center font-weight-bold"> Додати друга </h4>
+      </div>
+      <div class="card-body">
+        <%= form_for @animal, url: { action: 'create' }, multipart: true, html: { class: 'mt-5' }  do |f| %>
+          <div class="form-group">
+            <%= f.label "Хто шукає дім"%>
+            <%= collection_select :animal, :exemplar_id, Exemplar.all, :id, :name, {}, { class: 'form-control'} %>
+          </div>
+          <div class="form-group">
+            <%= f.label :name, "Кличка:"%>
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :avatar, "Фото" %>
+            <%= f.file_field :avatar %>
+          </div>
+          
+          <div class="form-group">
+            <%= f.submit "Додати друга", class: 'btn btn-warning btn-block' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div class="card-body">
-    <%= form_for @animal, url: { action: 'create' }, multipart: true, html: { class: 'mt-5' }  do |f| %>
-      <div class="form-group">
-        <%= f.label :name, "Кличка:"%>
-        <%= f.text_field :name, class: 'form-control' %>
-      </div>
-      <div class="form-group">
-        <%= f.label :avatar, "Фото" %>
-        <%= f.file_field :avatar %>
-      </div>
-      
-      <div class="form-group">
-        <%= f.submit "Create", class: 'btn btn-primary' %>
-      </div>
-    <% end %>
-  </div>
+  <div class="col"></div>
 </div>

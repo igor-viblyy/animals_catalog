@@ -8,11 +8,10 @@ class AnimalsController < ApplicationController
 
   def new
     @animal = Animal.new
-    # @animal = @animal.exemplars.build
   end
 
   def create
-    @animal = Animal.create!(animal_params)
+    @animal = Animal::Create.call(animal_params)
     if @animal.errors.empty?
       redirect_to :animals
     else
@@ -23,6 +22,8 @@ class AnimalsController < ApplicationController
   private
 
   def animal_params
-    params.require(:animal).permit(:name, :avatar, :exemplar_id)
+    params.require(:animal).permit(:name,
+                                   :avatar,
+                                   :exemplar_id)
   end
 end
